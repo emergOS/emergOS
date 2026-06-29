@@ -1,0 +1,18 @@
+{
+  "name": "emergos",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.0.8",
+  "scripts": {
+    "dev": "pnpm --filter @emergos/worker dev",
+    "build": "pnpm --filter @emergos/worker build && pnpm --filter create-emergos build",
+    "typecheck": "pnpm --filter @emergos/worker typecheck && pnpm --filter create-emergos typecheck",
+    "test": "pnpm --filter @emergos/worker test",
+    "release:check": "pnpm typecheck && pnpm test && pnpm build && pnpm --filter @emergos/worker deploy:check"
+  },
+  "workspaces": [
+    "apps/*",
+    "cli/*"
+  ]
+}

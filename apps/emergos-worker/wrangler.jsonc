@@ -1,0 +1,71 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "emergos",
+  "main": "./worker/index.ts",
+  "compatibility_date": "2026-06-27",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "not_found_handling": "single-page-application",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*", "/media/*", "/reports/*/print", "/robots.txt", "/sitemap.xml"]
+  },
+  "observability": {
+    "enabled": true,
+    "logs": {
+      "head_sampling_rate": 1
+    },
+    "traces": {
+      "enabled": true,
+      "head_sampling_rate": 0.01
+    }
+  },
+  "vars": {
+    "ENVIRONMENT": "production",
+    "DEFAULT_LOCALE": "en",
+    "DISASTER_PROFILE": "earthquake",
+    "COUNTRY_CODE": "VE",
+    "AFFECTED_AREA_LABEL": "Crisis response",
+    "PUBLIC_SITE_NAME": "emergOS",
+    "TURNSTILE_SITE_KEY": "",
+    "ENABLE_WORKERS_AI": "false",
+    "ENABLE_VECTORIZE": "false",
+    "ENABLE_PWA": "true",
+    "EMAIL_FROM": "",
+    "OPTIONAL_WHATSAPP_PROVIDER_API_KEY": ""
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "emergos-db",
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "./migrations"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "MEDIA",
+      "bucket_name": "emergos-media"
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "CONFIG_KV",
+      "id": "00000000000000000000000000000000"
+    }
+  ],
+  "queues": {
+    "producers": [
+      {
+        "binding": "JOBS",
+        "queue": "emergos-jobs"
+      }
+    ],
+    "consumers": [
+      {
+        "queue": "emergos-jobs",
+        "max_batch_size": 10,
+        "max_batch_timeout": 30
+      }
+    ]
+  }
+}

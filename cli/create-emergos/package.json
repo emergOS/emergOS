@@ -1,0 +1,31 @@
+{
+  "name": "create-emergos",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Create a deployable emergOS crisis response Worker starter.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "create-emergos": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "template"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "smoke": "pnpm build && node dist/index.js emergos-cli-smoke --yes --template ./template"
+  },
+  "keywords": [
+    "cloudflare",
+    "workers",
+    "crisis-response",
+    "emergency",
+    "starter"
+  ],
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "typescript": "^5.9.3"
+  }
+}

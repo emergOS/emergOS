@@ -1,0 +1,18 @@
+{
+  "name": "emergOS Crisis Response",
+  "short_name": "emergOS",
+  "description": "Crisis reports, resources, map, and offline-adjacent emergency information.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#C91525",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
