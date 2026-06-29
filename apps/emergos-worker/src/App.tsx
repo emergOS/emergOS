@@ -740,25 +740,44 @@ function ReportList({ reports, onNavigate, compact = false }: { reports: PublicR
 
   return (
     <div className={compact ? "report-list compact-reports" : "report-grid"}>
-      {reports.map((report) => (
-        <article className="card report-card" key={report.id}>
-          <div className="photo-frame">
-            {report.photoUrl ? <img src={report.photoUrl} alt={report.displayName} /> : report.subjectType === "pet" ? <PawPrint aria-hidden="true" /> : <UserPlus aria-hidden="true" />}
-          </div>
-          <div className="report-card-body">
-            <div className="badge-row">
-              <span className="badge">{statusLabels[report.status]}</span>
-              <span className="badge muted">{verificationLabels[report.verificationLevel]}</span>
+      {reports.map((report) => {
+        const reportPath = report.subjectType === "pet" ? `/pets/${report.publicSlug}` : `/reports/${report.publicSlug}`;
+        return (
+          <article
+            className="card report-card clickable-card"
+            key={report.id}
+            role="link"
+            tabIndex={0}
+            aria-label={`View report for ${report.displayName}`}
+            onClick={() => onNavigate(reportPath)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                onNavigate(reportPath);
+              }
+            }}
+          >
+            <div className="photo-frame">
+              {report.photoUrl ? <img src={report.photoUrl} alt={report.displayName} /> : report.subjectType === "pet" ? <PawPrint aria-hidden="true" /> : <UserPlus aria-hidden="true" />}
             </div>
-            <h2>{report.displayName}</h2>
-            <p>{report.subjectType === "pet"
-              ? [report.pet?.species, report.pet?.breed, report.pet?.color, report.lastSeenCity].filter(Boolean).join(" · ")
-              : [report.ageRange ?? report.age, report.lastSeenCity, report.lastSeenAdmin1].filter(Boolean).join(" · ")}</p>
-            {!compact && report.notesPublic && <p>{report.notesPublic}</p>}
-            <button onClick={() => onNavigate(report.subjectType === "pet" ? `/pets/${report.publicSlug}` : `/reports/${report.publicSlug}`)}>View report</button>
-          </div>
-        </article>
-      ))}
+            <div className="report-card-body">
+              <div className="badge-row">
+                <span className="badge">{statusLabels[report.status]}</span>
+                <span className="badge muted">{verificationLabels[report.verificationLevel]}</span>
+              </div>
+              <h2>{report.displayName}</h2>
+              <p>{report.subjectType === "pet"
+                ? [report.pet?.species, report.pet?.breed, report.pet?.color, report.lastSeenCity].filter(Boolean).join(" · ")
+                : [report.ageRange ?? report.age, report.lastSeenCity, report.lastSeenAdmin1].filter(Boolean).join(" · ")}</p>
+              {!compact && report.notesPublic && <p>{report.notesPublic}</p>}
+              <button onClick={(event) => {
+                event.stopPropagation();
+                onNavigate(reportPath);
+              }}>View report</button>
+            </div>
+          </article>
+        );
+      })}
     </div>
   );
 }

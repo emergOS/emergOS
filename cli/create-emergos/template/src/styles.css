@@ -866,7 +866,7 @@ small {
 }
 
 .report-card {
-  align-items: start;
+  align-items: stretch;
   display: grid;
   gap: 0;
   grid-template-columns: 1fr;
@@ -874,11 +874,25 @@ small {
   padding: 0;
 }
 
+.clickable-card {
+  cursor: pointer;
+  transition: border-color 120ms ease, box-shadow 120ms ease, transform 120ms ease;
+}
+
+.clickable-card:hover,
+.clickable-card:focus-visible {
+  border-color: #cbd5e1;
+  box-shadow: 0 8px 20px rgba(17, 24, 39, 0.08);
+  outline: none;
+  transform: translateY(-1px);
+}
+
 .report-card .photo-frame {
   border: 0;
   border-bottom: 1px solid var(--border);
   border-radius: 0;
   height: auto;
+  width: 100%;
 }
 
 .compact-reports .report-card {
@@ -1114,13 +1128,19 @@ small {
 .report-card .photo-frame {
   aspect-ratio: 4 / 3;
   max-height: 10.75rem;
+  width: 100%;
 }
 
 .photo-frame img,
 .detail-photo img {
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   width: 100%;
+}
+
+.report-card .photo-frame img {
+  display: block;
 }
 
 .photo-frame svg,
