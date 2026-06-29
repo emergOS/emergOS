@@ -195,7 +195,7 @@ const html = `<!doctype html>
         <p>
           Open-source infrastructure for missing people, shelters, aid coordination, and printable offline search materials.
         </p>
-        <a class="cta" href="https://github.com/emergOS">View on GitHub</a>
+        <a class="cta" href="https://github.com/emergOS/emergOS">View on GitHub</a>
       </section>
     </main>
 
