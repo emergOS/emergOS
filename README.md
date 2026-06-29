@@ -128,7 +128,7 @@ Two complementary ways to ship a crisis site:
 flowchart TD
   Dev["Developer / crisis lead"]
   Dev --> Btn["Deploy to Cloudflare Button"]
-  Dev --> CLI["npm create emergos@latest"]
+  Dev --> CLI["npm create @emergos/emergos@latest"]
 
   Btn --> Worker["Standalone Worker in apps/emergos-worker"]
   CLI --> Starter["Generated project from template"]
@@ -178,7 +178,7 @@ Optional flags in `wrangler.jsonc`: `ENABLE_WORKERS_AI`, `ENABLE_VECTORIZE`, `EN
 ```
 emergOS/
 ├── apps/emergos-worker/     # Main deployable Worker + React app
-├── cli/create-emergos/      # npm CLI and packaged template
+├── cli/create-emergos/      # @emergos/create-emergos npm CLI and packaged template
 ├── examples/earthquake-ve/  # Sample emergos.config.ts
 ├── emergos-landing-worker/  # Marketing landing page Worker
 ├── docs/                    # Deployment, moderation, privacy, API, status
@@ -210,7 +210,7 @@ Open the dev server URL printed by Vite (typically `http://localhost:5173`).
 ## Create a standalone project
 
 ```bash
-npm create emergos@latest my-response -- \
+npm create @emergos/emergos@latest my-response -- \
   --profile earthquake \
   --country VE \
   --locale es-VE \

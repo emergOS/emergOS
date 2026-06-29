@@ -1,5 +1,5 @@
 {
-  "name": "create-emergos",
+  "name": "@emergos/create-emergos",
   "version": "0.1.0",
   "private": false,
   "description": "Create a deployable emergOS crisis response Worker starter.",
