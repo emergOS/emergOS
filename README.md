@@ -1,5 +1,9 @@
 # emergOS
 
+<p align="center">
+  <img src="./emergos-banner.png" alt="emergOS banner" width="100%">
+</p>
+
 **Deploy a crowdsourced crisis management platform in under a minute** when tragedy strikes: earthquakes, floods, hurricanes, wildfires, conflict, displacement, and other humanitarian emergencies.
 
 **emergOS** is an open-source, Cloudflare-native starter for that moment: one-click or CLI setup, then a live site where communities can coordinate missing-person searches, found-person reports, tips, shelters, hospitals, aid points, and volunteer efforts — with moderation built in from day one.
