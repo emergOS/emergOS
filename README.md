@@ -20,6 +20,10 @@ This is **not** a replacement for official emergency services. It is a fast coor
 
 ## What is built (MVP)
 
+<p align="center">
+  <img width="3024" height="3562" alt="image" src="https://github.com/user-attachments/assets/a8504444-b48d-4aa2-a41a-c6a6517dc189" />
+</p>
+
 The first implementation is a self-contained Cloudflare Worker app in `apps/emergos-worker`, plus a `create-emergos` CLI for generating configured standalone starters.
 
 ```mermaid
